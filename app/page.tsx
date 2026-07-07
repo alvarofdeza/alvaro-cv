@@ -1,4 +1,64 @@
+import {
+  Briefcase,
+  Code,
+  Database,
+  Globe,
+  GraduationCap,
+  Mail,
+  MapPin,
+  Phone,
+  Wrench,
+  type LucideIcon,
+  type LucideProps,
+} from "lucide-react";
+
 const LINKEDIN_URL = "https://www.linkedin.com/in/álvaro-fernández-1244562a4";
+
+const ICON_PROPS = {
+  size: 16,
+  strokeWidth: 1.5,
+  className: "shrink-0 text-zinc-400",
+} as const;
+
+function LinkedinIcon({ size = 16, className, ...props }: LucideProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+      {...props}
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v2" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+function IconLabel({
+  icon: Icon,
+  children,
+  className = "",
+}: {
+  icon: LucideIcon | React.ComponentType<LucideProps>;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span className={`inline-flex items-center gap-2 ${className}`}>
+      <Icon {...ICON_PROPS} aria-hidden />
+      {children}
+    </span>
+  );
+}
 
 const experience = [
   {
@@ -34,21 +94,25 @@ const education = [
   },
 ];
 
-const skills = [
+const skills: { category: string; icon: LucideIcon; items: string[] }[] = [
   {
     category: "Lenguajes de Programación",
+    icon: Code,
     items: ["Java", "Python", "C", "C++", "C#"],
   },
   {
     category: "Bases de Datos",
+    icon: Database,
     items: ["MySQL", "MongoDB", "Neo4J"],
   },
   {
     category: "Herramientas y Metodologías",
+    icon: Wrench,
     items: ["Git", "GitHub", "Metodologías Ágiles"],
   },
   {
     category: "Idiomas",
+    icon: Globe,
     items: [
       "Inglés (B2 — TOEIC, Certificado Completo EOI B1)",
       "Español (Nativo)",
@@ -76,7 +140,7 @@ function ExternalLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="link-hover text-muted underline decoration-white/20 underline-offset-4 hover:decoration-white/50"
+      className="link-hover inline-flex items-center text-muted underline decoration-white/20 underline-offset-4 hover:decoration-white/50"
     >
       {children}
     </a>
@@ -116,18 +180,28 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="mt-12 flex flex-col gap-2 text-sm text-muted sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
+          <div className="mt-12 flex flex-col gap-3 text-sm text-muted sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
             <a
               href="mailto:alvaro.fernandeza@alumnos.upm.es"
-              className="link-hover"
+              className="link-hover inline-flex items-center gap-2"
             >
+              <Mail {...ICON_PROPS} aria-hidden />
               alvaro.fernandeza@alumnos.upm.es
             </a>
-            <a href="tel:+34658127929" className="link-hover">
+            <a
+              href="tel:+34658127929"
+              className="link-hover inline-flex items-center gap-2"
+            >
+              <Phone {...ICON_PROPS} aria-hidden />
               +34 658 127 929
             </a>
-            <span>Madrid, España</span>
-            <ExternalLink href={LINKEDIN_URL}>LinkedIn</ExternalLink>
+            <span className="inline-flex items-center gap-2">
+              <MapPin {...ICON_PROPS} aria-hidden />
+              Madrid, España
+            </span>
+            <ExternalLink href={LINKEDIN_URL}>
+              <IconLabel icon={LinkedinIcon}>LinkedIn</IconLabel>
+            </ExternalLink>
           </div>
         </header>
 
@@ -154,7 +228,9 @@ export default function Home() {
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-base font-medium sm:text-lg">
-                      {item.degree}
+                      <IconLabel icon={GraduationCap}>
+                        {item.degree}
+                      </IconLabel>
                     </h3>
                     <p className="mt-1 text-sm text-muted">
                       {item.institution}
@@ -191,8 +267,10 @@ export default function Home() {
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <h3 className="text-base font-medium sm:text-lg">
-                        {job.role}
-                        <span className="text-muted"> · {job.company}</span>
+                        <IconLabel icon={Briefcase}>
+                          {job.role}
+                          <span className="text-muted"> · {job.company}</span>
+                        </IconLabel>
                       </h3>
                       <p className="mt-1 text-sm text-subtle">{job.location}</p>
                     </div>
@@ -218,7 +296,9 @@ export default function Home() {
                 key={group.category}
                 className="card-hover rounded-2xl border border-border bg-surface p-6 sm:p-8"
               >
-                <h3 className="text-sm font-medium">{group.category}</h3>
+                <h3 className="text-sm font-medium">
+                  <IconLabel icon={group.icon}>{group.category}</IconLabel>
+                </h3>
                 <ul className="mt-4 space-y-2">
                   {group.items.map((item) => (
                     <li
