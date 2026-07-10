@@ -1,18 +1,27 @@
-# Álvaro Fernández — Portafolio Profesional
+# Personal Portfolio & Digital CV
 
-Repositorio del sitio web personal y currículum digital desarrollado como plataforma de marca profesional para la gestión de prácticas curriculares en ingeniería del software. El proyecto implementa una interfaz minimalista, optimización de rendimiento y diseño adaptativo (*responsive*).
+A modern, responsive portfolio website designed to showcase my software engineering projects, academic milestones, and professional experience. 
 
-## Stack Tecnológico
+The live site is deployed and accessible at: https://alvarofdeza.vercel.app
 
-* **Framework:** Next.js (App Router)
-* **Lenguaje:** TypeScript
-* **Biblioteca Principal:** React
-* **Estilos:** Tailwind CSS
-* **Despliegue:** Vercel
+## Tech Stack & Architecture
+* **Framework:** Next.js (React)
+* **Styling:** Tailwind CSS
+* **Deployment & Hosting:** Vercel (CI/CD integrated)
+* **Development Methodology:** AI-assisted development utilizing Cursor to accelerate components scaffolding and development lifecycles.
 
-## Características Principales
+## Key Features
+* **Responsive Design:** Optimized for mobile, tablet, and desktop viewports.
+* **Dynamic Showcase:** Direct integration and redirection to featured repositories (e.g., Battleship core backend implementation).
+* **Performance Architecture:** Fast loading speeds and optimized asset delivery via Next.js native routing.
 
-* **Diseño Adaptativo:** Interfaz completamente fluida optimizada para resoluciones móviles y de escritorio.
-* **Estética Minimalista:** Arquitectura visual limpia enfocada en la legibilidad y espaciados amplios.
-* **Integración de Documentación:** Sistema directo de descarga del currículum vitae en formato PDF.
-* **Control de Versiones:** Historial de desarrollo estructurado bajo buenas prácticas utilizando Git.
+## Local Setup & Installation
+
+### Prerequisites
+* **Node.js** (v18 or higher recommended)
+* **npm** or **yarn**
+
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/alvarofdeza/alvaro-cv.git](https://github.com/alvarofdeza/alvaro-cv.git)
