@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Álvaro Fernández — Ingeniería del Software · UPM",
+  title: "Álvaro Fernández Abad — Software Engineer",
   description:
-    "Estudiante de 4º curso de Ingeniería del Software en la UPM (ETSISI). Perfil académico, experiencia y habilidades técnicas.",
+    "Final-year Software Engineering student at UPM (ETSISI).",
 };
 
 export default function RootLayout({
