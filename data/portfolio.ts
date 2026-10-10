@@ -22,6 +22,7 @@ export interface Project {
     period: string;
     note?: string;
     badge?: string;
+    certificateUrl?: string;
   }
   
   export interface SkillCategory {
@@ -80,6 +81,7 @@ export interface Project {
       period: "Sep 2023 — Present",
       note: "Admission Grade (EvAU): 13.06 / 14",
       badge: "Completed 50-hour UPM MOOC on Generative AI & LLMs (2026)",
+      certificateUrl: "/mooc-ia.pdf",
     },
     {
       degree: "Technological Baccalaureate",

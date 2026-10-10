@@ -146,14 +146,27 @@ export default function Home() {
       </nav>
 
       <div className="relative mx-auto max-w-3xl px-6 py-20 sm:px-10 sm:py-28 lg:py-32">
+        <div className="pointer-events-none absolute top-20 bottom-0 left-6 z-50 w-14 sm:top-28 sm:left-10 sm:w-16 lg:top-32">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Back to top"
+            className="group pointer-events-auto sticky top-5 flex size-14 cursor-pointer items-center justify-center rounded-2xl border border-border bg-surface/80 font-mono text-sm font-semibold tracking-tight text-foreground backdrop-blur-md transition-[transform,box-shadow,border-color,background-color] duration-300 hover:border-white/25 hover:bg-white/[0.06] active:scale-95 sm:size-16 sm:text-base"
+          >
+            <span className="text-zinc-500 transition-transform duration-300 ease-out group-hover:-translate-x-[2px]">
+              &lt;/
+            </span>
+            <span>af</span>
+            <span className="text-zinc-500 transition-transform duration-300 ease-out group-hover:translate-x-[2px]">
+              &gt;
+            </span>
+          </button>
+        </div>
+
         {/* Header / Hero */}
         <header className="mb-24 sm:mb-32">
           <div className="mb-6 flex items-center justify-between">
-            <div className="card-hover flex size-14 items-center justify-center rounded-2xl border border-border bg-surface font-mono text-sm font-semibold tracking-tight text-foreground sm:size-16 sm:text-base">
-              <span className="text-zinc-500">&lt;/</span>
-              <span>af</span>
-              <span className="text-zinc-500">&gt;</span>
-            </div>
+            <div className="size-14 shrink-0 sm:size-16" aria-hidden />
 
             {/* Badge de disponibilidad laboral */}
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-400">
@@ -365,12 +378,27 @@ export default function Home() {
                 )}
 
                 {/* Badge de certificación LLMs */}
-                {item.badge && (
-                  <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-purple-500/20 bg-purple-500/10 px-3 py-1.5 text-xs text-purple-300">
-                    <Sparkles size={14} className="text-purple-400" />
-                    <span>{item.badge}</span>
-                  </div>
-                )}
+                {item.badge &&
+                  (item.certificateUrl ? (
+                    <a
+                      href={item.certificateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/badge mt-4 inline-flex items-center gap-2 rounded-lg border border-purple-500/20 bg-purple-500/10 px-3 py-1.5 text-xs text-purple-300 transition-[border-color,background-color,color] duration-300 hover:border-purple-400/50 hover:bg-purple-500/20 hover:text-purple-200"
+                    >
+                      <Sparkles size={14} className="text-purple-400" />
+                      <span>{item.badge}</span>
+                      <ExternalLink
+                        size={12}
+                        className="text-purple-400/70 transition-transform duration-200 group-hover/badge:translate-x-0.5 group-hover/badge:-translate-y-0.5 group-hover/badge:text-purple-300"
+                      />
+                    </a>
+                  ) : (
+                    <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-purple-500/20 bg-purple-500/10 px-3 py-1.5 text-xs text-purple-300">
+                      <Sparkles size={14} className="text-purple-400" />
+                      <span>{item.badge}</span>
+                    </div>
+                  ))}
               </article>
             ))}
           </div>
@@ -424,7 +452,8 @@ export default function Home() {
             {SKILL_CATEGORIES.map((group) => (
               <article
                 key={group.category}
-                className="card-hover rounded-2xl border border-border bg-surface p-6 sm:p-8"
+                className={`card-hover rounded-2xl border border-border bg-surface p-6 sm:p-8 ${group.category === "Architecture & Practices" ? "sm:col-span-2" : ""
+                  }`}
               >
                 <h3 className="text-sm font-medium">
                   <IconLabel icon={Code2}>{group.category}</IconLabel>
