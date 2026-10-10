@@ -125,7 +125,7 @@ export default function Home() {
         aria-label="Section navigation"
         className="fixed top-5 left-1/2 z-50 -translate-x-1/2"
       >
-        <ul className="flex items-center gap-0.5 rounded-full border border-border bg-surface/80 px-1.5 py-1 text-[11px] font-medium text-muted backdrop-blur-md sm:gap-1 sm:px-2 sm:py-1.5 sm:text-xs">
+        <ul className="flex items-center gap-0.5 rounded-full border border-border bg-surface/80 px-1 py-1 text-[10px] font-medium text-muted backdrop-blur-md min-[390px]:text-[11px] sm:gap-1 sm:px-2 sm:py-1.5 sm:text-xs">
           {[
             { href: "#projects", label: "Projects" },
             { href: "#education", label: "Education" },
@@ -136,7 +136,7 @@ export default function Home() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className="block rounded-full px-2.5 py-1.5 transition-colors hover:bg-white/5 hover:text-foreground sm:px-3"
+                className="block rounded-full px-2 py-1 transition-colors hover:bg-white/5 hover:text-foreground min-[390px]:px-2.5 min-[390px]:py-1.5 sm:px-3"
               >
                 {item.label}
               </a>
@@ -146,7 +146,7 @@ export default function Home() {
       </nav>
 
       <div className="relative mx-auto max-w-3xl px-6 py-20 sm:px-10 sm:py-28 lg:py-32">
-        <div className="pointer-events-none absolute top-20 bottom-0 left-6 z-50 w-14 sm:top-28 sm:left-10 sm:w-16 lg:top-32">
+        <div className="pointer-events-none absolute top-20 bottom-0 left-6 z-50 hidden w-14 sm:block sm:top-28 sm:left-10 sm:w-16 lg:top-32">
           <button
             type="button"
             onClick={() => {
@@ -169,7 +169,7 @@ export default function Home() {
         {/* Header / Hero */}
         <header className="mb-24 sm:mb-32">
           <div className="mb-6 flex items-center justify-between">
-            <div className="size-14 shrink-0 sm:size-16" aria-hidden />
+            <div className="hidden shrink-0 sm:block sm:size-16" aria-hidden />
 
             {/* Badge de disponibilidad laboral */}
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-400">
