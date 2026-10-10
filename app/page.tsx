@@ -121,6 +121,30 @@ export default function Home() {
         className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(255,255,255,0.06),transparent)]"
       />
 
+      <nav
+        aria-label="Section navigation"
+        className="fixed top-5 left-1/2 z-50 -translate-x-1/2"
+      >
+        <ul className="flex items-center gap-0.5 rounded-full border border-border bg-surface/80 px-1.5 py-1 text-[11px] font-medium text-muted backdrop-blur-md sm:gap-1 sm:px-2 sm:py-1.5 sm:text-xs">
+          {[
+            { href: "#projects", label: "Projects" },
+            { href: "#education", label: "Education" },
+            { href: "#experience", label: "Experience" },
+            { href: "#skills", label: "Skills" },
+            { href: "#languages", label: "Languages" },
+          ].map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className="block rounded-full px-2.5 py-1.5 transition-colors hover:bg-white/5 hover:text-foreground sm:px-3"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       <div className="relative mx-auto max-w-3xl px-6 py-20 sm:px-10 sm:py-28 lg:py-32">
         {/* Header / Hero */}
         <header className="mb-24 sm:mb-32">
@@ -165,7 +189,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center justify-center rounded-full border border-white/20 bg-white px-6 py-2.5 text-sm font-medium text-black hover:bg-white/90"
             >
-              Download Resume (PDF)
+              View Resume (PDF)
             </a>
 
             <button
@@ -249,7 +273,7 @@ export default function Home() {
         </header>
 
         {/* Proyectos Destacados */}
-        <section className="mb-24 sm:mb-32">
+        <section id="projects" className="mb-24 scroll-mt-24 sm:mb-32">
           <SectionHeading>Featured Projects</SectionHeading>
           <div className="space-y-6">
             {PROJECTS.map((project) => (
@@ -314,7 +338,7 @@ export default function Home() {
         </section>
 
         {/* Formación Académica */}
-        <section className="mb-24 sm:mb-32">
+        <section id="education" className="mb-24 scroll-mt-24 sm:mb-32">
           <SectionHeading>Education & Certifications</SectionHeading>
           <div className="space-y-6">
             {EDUCATION.map((item) => (
@@ -353,7 +377,7 @@ export default function Home() {
         </section>
 
         {/* Experiencia Laboral */}
-        <section className="mb-24 sm:mb-32">
+        <section id="experience" className="mb-24 scroll-mt-24 sm:mb-32">
           <SectionHeading>Work Experience</SectionHeading>
           <div className="relative space-y-0">
             <div
@@ -394,7 +418,7 @@ export default function Home() {
         </section>
 
         {/* Habilidades Técnicas */}
-        <section className="mb-16">
+        <section id="skills" className="mb-16 scroll-mt-24">
           <SectionHeading>Technical Skills</SectionHeading>
           <div className="grid gap-4 sm:grid-cols-2">
             {SKILL_CATEGORIES.map((group) => (
@@ -421,7 +445,7 @@ export default function Home() {
         </section>
 
         {/* Languages Section */}
-        <section className="mb-16">
+        <section id="languages" className="mb-16 scroll-mt-24">
           <SectionHeading>Languages</SectionHeading>
           <div className="grid gap-4 sm:grid-cols-2">
             {LANGUAGES.map((item) => (
