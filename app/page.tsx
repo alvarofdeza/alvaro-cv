@@ -149,7 +149,10 @@ export default function Home() {
         <div className="pointer-events-none absolute top-20 bottom-0 left-6 z-50 w-14 sm:top-28 sm:left-10 sm:w-16 lg:top-32">
           <button
             type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.history.pushState(null, "", window.location.pathname);
+            }}
             aria-label="Back to top"
             className="group pointer-events-auto sticky top-5 flex size-14 cursor-pointer items-center justify-center rounded-2xl border border-border bg-surface/80 font-mono text-sm font-semibold tracking-tight text-foreground backdrop-blur-md transition-[transform,box-shadow,border-color,background-color] duration-300 hover:border-white/25 hover:bg-white/[0.06] active:scale-95 sm:size-16 sm:text-base"
           >
