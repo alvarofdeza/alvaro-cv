@@ -43,7 +43,7 @@ export interface Project {
     location: "Madrid, Spain",
     email: "alvaro.fernandeza@alumnos.upm.es",
     phone: "+34 658 127 929",
-    linkedin: "https://www.linkedin.com/in/álvaro-fernández-1244562a4",
+    linkedin: "https://www.linkedin.com/in/alvarofdeza",
     github: "https://github.com/alvarofdeza",
     status: "Available for Internships",
   };
@@ -62,12 +62,12 @@ export interface Project {
       githubUrl: "https://github.com/alvarofdeza/Battleship_IWSIM21-07",
     },
     {
-      title: "AI-Augmented Developer Portfolio",
+      title: "Personal Portfolio & Digital CV",
       period: "2026",
       roleDescription: "Modern, high-performance personal web platform.",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
       highlights: [
-        "Engineered with prompt-driven AI workflows and strict component-driven architecture.",
+        "Built and deployed a rapid, minimal portfolio prototype.",
         "Automated CI/CD integration with zero-downtime deployment pipelines on Vercel."
       ],
       githubUrl: "https://github.com/alvarofdeza/alvaro-cv",
