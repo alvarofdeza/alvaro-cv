@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --muted: #a1a1aa;
-  --subtle: #71717a;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.16);
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-hover: rgba(255, 255, 255, 0.06);
-  --accent: #fafafa;
-}
+@theme {
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+  --font-pixel: var(--font-pixel), monospace;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-subtle: var(--subtle);
-  --color-border: var(--border);
-  --color-surface: var(--surface);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Palette: Workstation 95 Editorial */
+  --color-canvas: #E5E3DC;
+  --color-canvas-subtle: #DAD7CC;
+  --color-surface: #FDFCF7;
+  --color-surface-dim: #E8E4DA;
+  --color-surface-sunken: #DDD8CD;
+
+  --color-ink: #1C1E21;
+  --color-ink-muted: #565A63;
+  --color-ink-faint: #8A8E98;
+
+  --color-border-retro: #23262B;
+
+  /* Petroleum Teal: Primary system accent & window headers */
+  --color-teal-title: #204B57;
+  --color-teal-active: #2D6170;
+  --color-teal-tint: #E2ECEE;
+
+  /* Burnt Vermilion: Stamps, action CTAs, alerts */
+  --color-vermilion: #C84831;
+  --color-vermilion-hover: #B33D27;
+  --color-vermilion-tint: #F8EDE9;
+
+  /* Ochre Amber: Project folders, architecture tags */
+  --color-amber-folder: #D6973D;
+  --color-amber-tint: #FDF6E9;
+
+  /* Spruce Evergreen: Available status, badges */
+  --color-forest: #2B6E44;
+  --color-forest-tint: #EAF4EE;
+
+  /* Shadows */
+  --shadow-hard-sm: 2px 2px 0px #23262B;
+  --shadow-hard: 3px 3px 0px #23262B;
+  --shadow-hard-lg: 5px 5px 0px #23262B;
 }
 
 * {
@@ -32,51 +52,119 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::selection {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--foreground);
+/* Hard Drop Shadows */
+.shadow-hard {
+  box-shadow: 3px 3px 0px var(--color-border-retro);
 }
 
-.card-hover {
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    background-color 0.35s ease,
-    box-shadow 0.35s ease;
+.shadow-hard-sm {
+  box-shadow: 2px 2px 0px var(--color-border-retro);
 }
 
-.card-hover:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-hover);
-  background-color: var(--surface-hover);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+.shadow-hard-lg {
+  box-shadow: 5px 5px 0px var(--color-border-retro);
 }
 
-.link-hover {
-  transition: color 0.25s ease, opacity 0.25s ease;
+.shadow-hard-teal {
+  box-shadow: 3px 3px 0px var(--color-teal-title);
 }
 
-.link-hover:hover {
-  color: var(--foreground);
-  opacity: 1;
+.shadow-hard-vermilion {
+  box-shadow: 3px 3px 0px var(--color-vermilion);
 }
 
-.btn-primary {
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s ease;
+/* 90s Classic OS 3D Bevels */
+.bezel-outset {
+  border-top: 2px solid #FFFFFF;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #7F848D;
+  border-bottom: 2px solid #7F848D;
 }
 
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
+.bezel-inset {
+  border-top: 2px solid #7F848D;
+  border-left: 2px solid #7F848D;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+.bezel-button {
+  border-top: 2px solid #FFFFFF;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #23262B;
+  border-bottom: 2px solid #23262B;
+}
+
+.bezel-button:active {
+  border-top: 2px solid #23262B;
+  border-left: 2px solid #23262B;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+/* Technical / Editorial dot grid pattern */
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(35, 38, 43, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Risograph / Blueprint diagonal hatch */
+.bg-hatch {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(35, 38, 43, 0.05) 4px,
+    rgba(35, 38, 43, 0.05) 5px
+  );
+}
+
+/* Title bar grab / scan stripes */
+.titlebar-stripes {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.35) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Language Crossfade Transition */
+.lang-fade-enter {
+  animation: langFadeIn 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes langFadeIn {
+  from {
+    opacity: 0.85;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility: respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
 }
