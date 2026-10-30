@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import {
   Instrument_Serif,
@@ -82,6 +83,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-canvas text-ink font-sans selection:bg-teal-title/20 selection:text-ink">
         {children}
+        <Analytics />
       </body>
     </html>
   );
