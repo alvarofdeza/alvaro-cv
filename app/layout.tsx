@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import {
   Instrument_Serif,
@@ -84,6 +85,7 @@ export default function RootLayout({
       <body className="min-h-full bg-canvas text-ink font-sans selection:bg-teal-title/20 selection:text-ink">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
